@@ -1,0 +1,13 @@
+#!/bin/bash
+#$ -cwd
+#$ -N gen_0_cand_0
+#$ -q cpu.q
+#$ -pe smp 64
+#$ -l h_vmem=128G
+#$ -l h_rt=5:00:00
+#$ -o /ddn/rbarav/Channelopathies/sim/qsub/mybatch3.log.run
+#$ -e /ddn/rbarav/Channelopathies/sim/qsub/mybatch3.log.err
+
+source ~/.bashrc
+mpiexec -n $NSLOTS -hosts $(hostname) nrniv -python -mpi init.py
+
